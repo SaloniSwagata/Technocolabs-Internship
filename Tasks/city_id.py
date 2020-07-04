@@ -1,10 +1,10 @@
 import pyowm
-from api_key import API_KEY
 
-owm = pyowm.OWM(API_KEY)
+owm = pyowm.OWM('d90703eea69f90f613b88279fea113db')
 mgr = owm.weather_manager()
-obs = mgr.weather_at_id(5391959)
+Id = int(input("Enter the city id: "))
+obs = mgr.weather_at_id(Id)
 weather = obs.weather
 temperature = weather.temperature(unit='fahrenheit')['temp']
 
-print(f'The temperature is {temperature} degrees Fahrenheit.')
+print(f'The temperature for city id {Id} is {temperature} degrees Fahrenheit.')
