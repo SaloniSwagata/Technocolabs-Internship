@@ -3,12 +3,25 @@ from PIL import ImageTk,Image
 import matplotlib.pyplot as plt
 import pyowm
 import numpy as np
+from tabulate import tabulate
+
 
 root = Tk()
 root.title("Weather App")
 root.geometry("400x200")
 
+def display(time,Min,Max):
+    place = e.get()
+    print(f"The 5 day forecast for {place} is as follows - ")
+    print()
+  
+    i=0
+    l=[]
+    for i in range(len(time)):
+        l.append([time[i],Min[i],Max[i]])
+    table = tabulate(l, headers=['Day', 'Minimum Temperature', 'Maximum Temperature'], tablefmt='orgtbl')
 
+    print(table)
 
 def bargraph():
     owm = pyowm.OWM('d90703eea69f90f613b88279fea113db')
@@ -48,7 +61,7 @@ def bargraph():
     barMin = ax.bar(xpos-bar_width/2,temp_min , bar_width, label="Minimum Temperature")
     barMax = ax.bar(xpos+bar_width/2,temp_max , bar_width, label="Maximum Temperature")
     
-    
+    display(time,temp_min,temp_max)
 
     # inserting x axis label
     ax.set_xticks(xpos)
@@ -117,6 +130,8 @@ def linegraph():
         else:
             t_min.append(int(weather.temperature(unit='celsius')['temp_min']))
             t_max.append(int(weather.temperature(unit='celsius')['temp_max']))
+
+    display(time,temp_min,temp_max)
 
     xpos = np.arange(len(time))    
     plt.plot(xpos, temp_min , color='blue', label="Minimum Temperature")
