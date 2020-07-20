@@ -8,7 +8,7 @@ from tabulate import tabulate
 
 root = Tk()
 root.title("Weather App")
-root.geometry("400x200")
+root.config(bg="skyblue")
 
 def display(time,Min,Max):
     place = e.get()
@@ -165,22 +165,22 @@ def linegraph():
     plt.legend()
     canvas = plt.show()
 
-Title = Label(root, text="Welcome to the Weather App!\n")
-#Title.pack()
 
-text = Label(root, text="Enter the name of the City:\n")
-#text.pack()
-e = Entry(root, width=20, borderwidth=5)
+Title = Label(root, text="Welcome to the Weather App!", bg="skyblue", fg="white", font="none 28 bold")
+Title.config(anchor=CENTER)
+
+text = Label(root, text="Enter the name of the City:", bg="skyblue", fg="black", font="none 20 bold")
+e = Entry(root, width=30)
 #e.pack()
 
-Title.grid(row=0,column=0)
-text.grid(row=1,column=0)
-e.grid(row=1,column=2)
+Title.grid(row=1,column=0, padx=5, pady=5)
+text.grid(row=2,column=0)
+e.grid(row=2,column=1)
 
 myButton = Button(root, text="Get Weather Forecast in Bar Graph", command= bargraph, padx=10, pady=5)
 myButton1 = Button(root, text="Get Weather Forecast in Line Graph", command= linegraph, padx=10, pady=5)
-myButton.grid(row=3,column=2)
-myButton1.grid(row=6,column=2)
+myButton.grid(row=3,column=0, pady=10)
+myButton1.grid(row=3,column=1, pady=10)
 
 
 
