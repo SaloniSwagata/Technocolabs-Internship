@@ -170,7 +170,7 @@ Title = Label(root, text="Welcome to the Weather App!", bg="skyblue", fg="white"
 Title.config(anchor=CENTER)
 
 text = Label(root, text="Enter the name of the City:", bg="skyblue", fg="black", font="none 20 bold")
-e = Entry(root, width=30)
+e = Entry(root, width=10, font=('Helvetica', 30))
 #e.pack()
 
 Title.grid(row=1,column=0, padx=5, pady=5)
@@ -180,7 +180,7 @@ e.grid(row=2,column=1)
 myButton = Button(root, text="Get Weather Forecast in Bar Graph", command= bargraph, padx=10, pady=5)
 myButton1 = Button(root, text="Get Weather Forecast in Line Graph", command= linegraph, padx=10, pady=5)
 myButton.grid(row=3,column=0, pady=10)
-myButton1.grid(row=3,column=1, pady=10)
+myButton1.grid(row=4,column=0, pady=10)
 
 
 
